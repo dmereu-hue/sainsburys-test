@@ -64,7 +64,7 @@ public class ServiceUtilityTest {
 			e.printStackTrace();
 		}
 		
-		Product first = resp.getProducts().get(0);
+		Product first = resp.getResults().get(0);
 		
 		assertEquals(first.getTitle(), "Sainsbury's Strawberries 400g");
 		assertEquals(first.getUnitPrice(), 1.75);

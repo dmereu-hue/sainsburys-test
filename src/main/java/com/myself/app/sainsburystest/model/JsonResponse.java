@@ -3,27 +3,21 @@ package com.myself.app.sainsburystest.model;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonValue;
-
 public class JsonResponse {
-	
-	@JsonIgnore
-	private List<Product> products;
-	
+	private List<Product> results;
 	private Total total;
 	
 	public JsonResponse() {
-		this.products = new ArrayList<Product>();
+		this.results = new ArrayList<Product>();
 		this.total = new Total();
 	}
 	
 	public void addProduct(Product product) {
-		this.products.add(product);
+		this.results.add(product);
 	}
 	
 	public void calculateTotals() throws Exception {
-		for (Product product : products) {
+		for (Product product : results) {
 			double unitPrice = product.getUnitPrice();
 			
 			this.total.addGross(unitPrice);
@@ -32,13 +26,12 @@ public class JsonResponse {
 		this.total.calculateVat();
 	}
 
-	@JsonValue
-	public List<Product> getProducts() {
-		return products;
+	public List<Product> getResults() {
+		return results;
 	}
 
-	public void setProducts(List<Product> products) {
-		this.products = products;
+	public void setResults(List<Product> results) {
+		this.results = results;
 	}
 
 	public Total getTotal() {
@@ -51,7 +44,7 @@ public class JsonResponse {
 
 	@Override
 	public String toString() {
-		return "JsonResponse [products=" + products + ", total=" + total + "]";
+		return "JsonResponse [products=" + results + ", total=" + total + "]";
 	}
 }
 	
